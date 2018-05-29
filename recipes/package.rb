@@ -20,6 +20,11 @@
 case node['platform_family']
 when 'debian'
   # apt repository configuration
+  
+  package 'apt-transport-https' do
+    action: install
+  end
+  
   apt_repository 'elasticsearch' do
     uri node['elasticsearch']['apt']['uri']
     distribution node['elasticsearch']['apt']['distribution']
